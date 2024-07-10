@@ -16,6 +16,7 @@ export class PasswordInputComponent implements ControlValueAccessor, AfterViewIn
   @ViewChild('passwordInput') passwordInputElement!: ElementRef;
 
   password: string = '';
+  showPassword: boolean = false;
 
   constructor(private passwordStrengthService: PasswordStrengthService) { }
 
@@ -45,5 +46,9 @@ export class PasswordInputComponent implements ControlValueAccessor, AfterViewIn
     this.password = input.value;
     this.onChange(this.password);
     this.passwordStrengthService.calculateStrength(this.password);
+  }
+
+  togglePasswordVisibility(): void {
+    this.showPassword = !this.showPassword;
   }
 }
